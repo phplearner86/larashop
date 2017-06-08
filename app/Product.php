@@ -12,4 +12,14 @@ class Product extends Model
     {
         return $this->belongsTo(Group::class);
     }
+
+    public function getPriceFormattedAttribute()
+    {
+        return round($this->price / 100);
+    }
+
+    public function scopeFilter($query, $filters)
+    {
+        return $filters->apply($query);
+    }
 }

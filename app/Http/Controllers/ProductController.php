@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Filters\ProductFilters;
 use App\Product;
+use App\Traits\ModelFinder;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    use ModelFinder;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ProductFilters $filters)
     {
-        return view('products.index');
+        $categories = Category::all();
+        $products = $this->allProducts($filters);
+
+        return view('products.index', compact('categories', 'products'));
     }
 
     /**

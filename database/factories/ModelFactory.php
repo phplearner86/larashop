@@ -35,9 +35,9 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
         'group_id' => function(){
             factory(App\Group::class)->create()->id;
         },
-        'name' => $faker->sentence,
+        'name' => $faker->words($nb = 3, $asText = true),
         'description' => $faker->paragraph(3),
-        'price' => $faker->randomNumber($nbDigits = 7, $strict = false),
+        'price' => $faker->randomNumber($nbDigits = 5, $strict = false),
     ];
 });
 
