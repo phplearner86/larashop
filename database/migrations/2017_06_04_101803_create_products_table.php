@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('set null');
 
             $table->string('name');
+            $table->string('slug');
             $table->text('description');
             $table->unsignedInteger('price');
             $table->timestamps();

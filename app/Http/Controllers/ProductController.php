@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Filters\ProductFilters;
+use App\Group;
 use App\Product;
 use App\Traits\ModelFinder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -16,10 +18,19 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ProductFilters $filters)
+    public function index(ProductFilters $filters, Request $request)
     {
+        $per_page = $request->per_page;
+        if ($request->sort) 
+        {
+           $parameter = $request->sort;
+        }
+        else
+        {
+            $parameter = 'name';
+        }
         $categories = Category::all();
-        $products = $this->allProducts($filters);
+        $products = $this->allProducts($filters, $per_page, $parameter);
 
         return view('products.index', compact('categories', 'products'));
     }
@@ -51,8 +62,15 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Request $request, Product $product)
     {
+        if ($request->rating) 
+        {
+            Auth::user()->products()->attach($product, [
+                'rating' => $request->rating
+            ]);
+        }
+
         return view('products.show', compact('product'));
     }
 

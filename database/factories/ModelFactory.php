@@ -41,3 +41,11 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Photo::class, function (Faker\Generator $faker) {
+
+    return [
+        'path' => 'asdasd',
+        'product_id' => 3
+    ];
+});
+

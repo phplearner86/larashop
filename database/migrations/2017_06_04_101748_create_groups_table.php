@@ -20,6 +20,7 @@ class CreateGroupsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
 
             $table->string('name');
+            $table->string('slug');
             $table->timestamps();
         });
     }

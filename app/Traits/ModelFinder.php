@@ -6,8 +6,8 @@ use App\Product;
 
 trait ModelFinder
 {
-    public function allProducts($filters, $per_page = 9)
+    public function allProducts($filters, $per_page=5, $parameter='name')
     {
-       return  Product::orderBy('name')->filter($filters)->paginate($per_page);
+        return  Product::orderBy($parameter)->filter($filters)->paginate($per_page);
     }
 }
