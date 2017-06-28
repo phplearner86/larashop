@@ -55,6 +55,20 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    @if (Auth::user()->profile)
+                                        <li>
+                                            <a href="{{ route('profiles.edit', 1) }}">
+                                                Edit Profile
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('profiles.create') }}">
+                                                Create Profile
+                                            </a>
+                                        </li>
+                                    @endif
+                                    
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -69,6 +83,16 @@
                                 </ul>
                             </li>
                         @endif
+                        <li>
+                        <div class="product_list_header" style="padding-top: 6px" >  
+
+                                <a  href="{{ route('carts.index') }}" class="btn btn-default">
+                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                </a>
+
+
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -11,10 +11,20 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class)->create([
+        $user1 = factory(App\User::class)->create([
             'name' => 'Branislav',
             'email' => 'b@gmail.com',
-            //'password' => bcrypt('123456'),
+            'password' => bcrypt(123456),
+            'verified' => true,
+            'email_token' => '',
             ]);
+
+        $user2 = factory(App\User::class)->create([
+            'email' => 'p@gmail.com',
+            ]);
+
+       factory(App\Profile::class)->create([
+            'user_id' => $user2->id
+        ]);
     }
 }

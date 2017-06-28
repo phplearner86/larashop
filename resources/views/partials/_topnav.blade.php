@@ -13,7 +13,7 @@
         </div>
         <div class="product_list_header">  
                 
-                    <a  href="{{ route('carts.index') }}" class="btn btn-primary">
+                    <a  href="{{ route('carts.index') }}" class="btn btn-default">
                         <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
                     </a>
 

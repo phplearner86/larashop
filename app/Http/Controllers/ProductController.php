@@ -20,6 +20,7 @@ class ProductController extends Controller
      */
     public function index(ProductFilters $filters, Request $request)
     {
+        //return $request->search;
         $per_page = $request->per_page;
         if ($request->sort) 
         {
@@ -29,10 +30,17 @@ class ProductController extends Controller
         {
             $parameter = 'name';
         }
-        $categories = Category::all();
-        $products = $this->allProducts($filters, $per_page, $parameter);
+        if ($request->search) 
+        {
+            $products = Product::where('name', 'LIKE', '%'.$request->search.'%')->paginate();
+        }
+        else
+        {
+            $products = $this->allProducts($filters, $per_page, $parameter);
+        }
+            //$categories = Category::orderBy('name')->get();
 
-        return view('products.index', compact('categories', 'products'));
+        return view('products.index', compact('products'));
     }
 
     /**

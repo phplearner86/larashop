@@ -2,12 +2,12 @@
 
 @section('content')
    
-   @include('partials._topnav')
+
 
     @include('partials._logo')
 <!-- //header -->
 <!-- navigation -->
-    @include('partials._mainnav')
+    @include('partials._main_nav')
     <!-- breadcrumbs -->
         <div class="breadcrumbs">
             <div class="container">

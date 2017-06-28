@@ -4,9 +4,9 @@
     <td class="invert">
          <div class="quantity"> 
             <div class="quantity-select">                           
-                <div class="entry value-minus">&nbsp;</div>
-                <div class="entry value"><span>{{ $item->qty }}</span></div>
-                <div class="entry value-plus active">&nbsp;</div>
+                <div class="entry value-minus" id="minus">&nbsp;</div>
+                <div class="entry value" ><span>{{ $item->qty }}</span></div>
+                <div class="entry value-plus active" id="plus">&nbsp;</div>
             </div>
         </div>
     </td>

@@ -41,10 +41,10 @@
                     <div class="checkout-left-basket">
                         <h4>Total Amount</h4>
                         <ul>
-                            <li>Subtotal <i>-</i> <span>${{ Cart::subtotal() }}</span></li>
-                            <li>Tax <i>-</i> <span>${{-- {{ tax() }}  --}}</span></li>
-                            <li>Shipping <i>-</i> <span>${{-- {{ transport() }} --}} </span></li>
-                            <li>Total <i>-</i> <span>${{-- {{ total(subtotal()) }} --}}</span></li>
+                            <li>Subtotal <i>-</i> <span>${{ subtotal() }}</span></li>
+                            <li>Tax <i>-</i> <span>${{ tax() }}</span></li>
+                            <li>Shipping <i>-</i> <span>${{ transport() }} </span></li>
+                            <li>Total <i>-</i> <span>${{ total(subtotal()) }}</span></li>
                         </ul>
                     </div>
                     <form action="{{ route('carts.destroy') }}" method="POST">
@@ -57,6 +57,10 @@
                     </form>
                     <div class="checkout-right-basket">
                         <a href="{{ route('products.index') }}"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+                    </div>
+
+                    <div class="checkout-right-basket">
+                        <a href="{{ route('orders.create') }}"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Make an Order</a>
                     </div>
                     <div class="clearfix"> </div>
                 </div>

@@ -5,10 +5,11 @@ namespace App\Filters;
 use App\Category;
 use App\Group;
 use App\Product;
+use Illuminate\Http\Request;
 
 class ProductFilters extends Filters
 {
-    protected $filters = ['group', 'category'];
+    protected $filters = ['group', 'category', 'search'];
 
     protected function group($slug)
     {
@@ -31,5 +32,4 @@ class ProductFilters extends Filters
         return $products->count() ? $products : "";
 
     }
-
 }

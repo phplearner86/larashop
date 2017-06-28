@@ -15,19 +15,19 @@ function price($price)
 function subtotal()
 {
     //return (float)str_replace(',', '', Cart::subtotal());
-    //return Cart::subtotal()
+    //return Cart::subtotal();
     //return gettype(Cart::subtotal());
-    // $s = 0;
-    // foreach (Cart::content() as $item) 
-    // {
-    //    $k = $item->price * $item->qty;
-    //    $s = $s + $k;
-    // }
+    $s = 0;
+    foreach (Cart::content() as $item) 
+    {
+       $k = $item->price * $item->qty;
+       $s = $s + $k;
+    }
     
-    // return (int)$s;
+    return (int)$s/100;
 }
 
-/*function tax()
+function tax()
 {
     return subtotal() *  0.18;
      //number_format($tax,2);
@@ -35,18 +35,42 @@ function subtotal()
 
 function transport()
 {
-    if (subtotal()>5000) 
+    if (0<subtotal() && subtotal()<5000) 
     {
-       return 0;
+       return 100;
     }
     else
     {
-        return 100;
+        return 0;
     }
 }
 
 function total($subtotal)
 {
     return subtotal() + tax($subtotal) + transport();
-}*/
+}
+
+function isUser($user)
+{
+    if ($user) 
+    {
+       return $user->email;
+    }
+    else
+    {
+        return '';
+    }
+}
+
+function hasProfile($value)
+{
+    if (Auth::user()) 
+    {
+       return Auth::user()->profile->$value;
+    }
+    else
+    {
+        return '';
+    }
+}
 

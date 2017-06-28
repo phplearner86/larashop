@@ -51,7 +51,7 @@ class PhotosTableSeeder extends Seeder
         foreach ($products as $product) 
         {
             factory(App\Photo::class)->create([
-                    'path' => $photo,
+                    'path' => 'images/products/'.random_int(1, 20) .'.png',
                     'product_id' => $product->id
                     ]); 
         }

@@ -2,12 +2,12 @@
 
 @section('content')
     <!-- header -->
-    @include('partials._topnav')
+
 
     @include('partials._logo')
 <!-- //header -->
 <!-- navigation -->
-    @include('partials._mainnav')
+    @include('partials._main_nav')
     <div class="breadcrumbs">
         <div class="container">
             <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
@@ -24,6 +24,7 @@
             </div>
 
             <div class="col-md-8 products-right">
+
                 <div class="products-right-grid">
                     <div class="products-right-grids">
                         <div class="sorting">
@@ -102,8 +103,11 @@
                 <p>No products</p>
                 @endif
 
-
-                <div class="text-center">{{ $products->appends(Request::input())->links() }}</div>
+                <div class="text-center">
+                    {{-- @if ($products->count()>1) --}}
+                        {{ $products->appends(Request::input())->links() }}
+                    {{-- @endif --}}
+                </div>
                 
             </div>
             <div class="clearfix"> </div>

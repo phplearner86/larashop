@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'email_token', 'verified'
     ];
 
     /**
@@ -35,6 +35,11 @@ class User extends Authenticatable
     public function products()
     {
         return $this->belongsToMany(Product::class)->withPivot('rating');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 
 

@@ -7,11 +7,12 @@
             </ul>
         </div>
         <div class="w3ls_logo_products_left">
-            <h1><a href="index.html">super Market</a></h1>
+            <h1><a href="{{ route('products.index') }}">{{ config('app.name') }}</a></h1>
         </div>
     <div class="w3l_search">
-        <form action="#" method="post">
-            <input type="search" name="Search" placeholder="Search for a Product..." required="">
+        <form action="{{ route('products.index') }}" method="post">
+        {{ csrf_field() }}
+            <input type="search" name="search" placeholder="Search for a Product..." required="">
             <button type="submit" class="btn btn-default search" aria-label="Left Align">
                 <i class="fa fa-search" aria-hidden="true"> </i>
             </button>
